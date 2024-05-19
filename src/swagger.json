@@ -1,0 +1,257 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Zenklub Appointments API",
+    "version": "1.0.0",
+    "description": "API to manage appointments"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "paths": {
+    "/api/professionals": {
+      "post": {
+        "summary": "Create a new professional",
+        "requestBody": {
+          "description": "Professional data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Dr. Jane Doe"
+                  },
+                  "availability": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "day": {
+                          "type": "string",
+                          "example": "Monday"
+                        },
+                        "slots": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "08:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Professional created successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/appointments": {
+      "post": {
+        "summary": "Create a new appointment",
+        "requestBody": {
+          "description": "Appointment data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "professionalId": {
+                    "type": "string",
+                    "example": "60c72b2f9b1e8c5f1c8a1e42"
+                  },
+                  "client": {
+                    "type": "string",
+                    "example": "John Doe"
+                  },
+                  "startTime": {
+                    "type": "string",
+                    "example": "2024-05-20T09:00:00Z"
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2024-05-20"
+                  }
+                },
+                "required": ["professionalId", "client", "startTime", "date"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Appointment created successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/professionals/{professionalId}/availability": {
+      "get": {
+        "summary": "Get available slots by professional ID",
+        "parameters": [
+          {
+            "name": "professionalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60c72b2f9b1e8c5f1c8a1e42"
+            },
+            "description": "ID of the professional"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2024-05-20"
+            },
+            "description": "Start date for availability"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2024-05-21"
+            },
+            "description": "End date for availability"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "404": {
+            "description": "Professional not found"
+          }
+        }
+      }
+    },
+    "/api/professionals/{professionalId}": {
+      "put": {
+        "summary": "Update a professional",
+        "parameters": [
+          {
+            "name": "professionalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60c72b2f9b1e8c5f1c8a1e42"
+            },
+            "description": "ID of the professional"
+          }
+        ],
+        "requestBody": {
+          "description": "Professional data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Dr. Jane Doe"
+                  },
+                  "availability": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "day": {
+                          "type": "string",
+                          "example": "Tuesday"
+                        },
+                        "slots": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "08:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Professional updated successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a professional",
+        "parameters": [
+          {
+            "name": "professionalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "60c72b2f9b1e8c5f1c8a1e42"
+            },
+            "description": "ID of the professional"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Professional deleted successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Professional not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}
