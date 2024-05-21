@@ -21,13 +21,16 @@ DB_PASS=suaSenha
 ```bash
 npm install
 ```
+O MongoDB não cria um banco de dados automaticamente até que você insira algum dado nele. Por isso, será necessário criar o banco de dados `zenklub-appointments` com alguma coleção de teste inicial.
 
-Após a instalação das dependências, você pode iniciar o servidor localmente com o comando:
+Após a instalação das dependências e a criação do banco de dados, você pode iniciar o servidor localmente com o comando:
 ```bash
-npm start
+npm run dev
 ```
 
 O servidor estará disponível em http://localhost:5000 por padrão.
+
+Você consegue testar os endpoints a partir da documentação do Swagger em: http://localhost:5000/api-docs
 
 ## Endpoints
 ### GET /api/professionals/:professionalId
