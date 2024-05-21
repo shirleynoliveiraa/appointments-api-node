@@ -6,9 +6,17 @@ API para agendamento de consultas com profissionais Zenklub.
 
 A API Zenklub Appointments permite que os usuários agendem consultas com profissionais cadastrados na plataforma. Os usuários podem visualizar a disponibilidade de horários dos profissionais e agendar consultas. Os profissionais podem visualizar a disponibilidade, incluir novas datas, alterar as existentes e se excluir da agenda.
 
-## Instalação
+## Instalação e Configuração
 
-Certifique-se de ter o Node.js instalado em sua máquina. Clone este repositório e execute o seguinte comando para instalar todas as dependências:
+Certifique-se de ter o Node.js e o Mongodb (compass) instalado em sua máquina. Clone este repositório e execute o seguinte comando para instalar todas as dependências:
+
+1. Renomeie o arquivo `.env.example` para `.env`.
+2. Adicione suas credenciais do MongoDB ao arquivo `.env`:
+
+```plaintext
+DB_USER=seuUsuario
+DB_PASS=suaSenha
+```
 
 ```bash
 npm install

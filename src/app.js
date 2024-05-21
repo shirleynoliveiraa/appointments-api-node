@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const db = require('./config/database').mongoURI;
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json'); // Carrega o arquivo swagger.json
 //const YAML = require('yamljs');
@@ -11,9 +12,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // Database Config
-const db = require('./config/database');
-mongoose.connect(db.mongoURI)
-  .then(() => console.log('MongoDB connected'))
+mongoose.connect(db)
+  .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
 // Routes
