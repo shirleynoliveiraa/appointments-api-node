@@ -1,10 +1,10 @@
 # appointments-api-node
 
-API para agendamento de consultas com profissionais Zenklub.
+API para agendamento de consultas com profissionais da saúde.
 
 ## Descrição
 
-A API Zenklub Appointments permite que os usuários agendem consultas com profissionais cadastrados na plataforma. Os usuários podem visualizar a disponibilidade de horários dos profissionais e agendar consultas. Os profissionais podem visualizar a disponibilidade, incluir novas datas, alterar as existentes e se excluir da agenda.
+A appointments-api-node permite que os usuários agendem consultas com profissionais cadastrados na plataforma. Os usuários podem visualizar a disponibilidade de horários dos profissionais e agendar consultas. Os profissionais podem visualizar a disponibilidade, incluir novas datas, alterar as existentes e se excluir da agenda.
 
 ## Instalação e Configuração
 
