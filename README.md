@@ -1,4 +1,4 @@
-# Zenklub Appointments API
+# appointments-api-node
 
 API para agendamento de consultas com profissionais Zenklub.
 
